@@ -1,13 +1,16 @@
 # This is a makefile. I'm sure we'll need / want this at some point
 
-stock_predictor: main.o ReadFile.o #and all other .o files involved
-	gcc -Wall -o stock_predictor main.o
+stock_predictor: main.o ReadFile.o beta.o
+	gcc -Wall -o stock_predictor main.o ReadFile.o beta.o
 
-main.o: main.c ReadFile.h #and other header files
+main.o: main.c ReadFile.h beta.h
 	gcc -Wall -c main.c
 
 ReadFile.o: ReadFile.c ReadFile.h
 	gcc -Wall -c ReadFile.c
+
+beta.o: beta.c beta.h
+	gcc -Wall -c beta.c
 
 clean:
 	rm -rf *.o stock_predictor

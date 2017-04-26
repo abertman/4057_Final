@@ -1,1 +1,1 @@
-double ReadFile(char Ticker[]);
+double *ReadFile(char Ticker[],int number_of_rows);

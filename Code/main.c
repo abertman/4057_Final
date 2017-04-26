@@ -3,20 +3,30 @@
 #include <string.h>
 #include <math.h>
 #include "ReadFile.h"
+#include "beta.h"
 
-void main(int argc, char *argv[]){
+int main(int argc, char *argv[]){
 
-// Read in data
+int number_of_rows = 9150;
 
-// Build the structs based on the data. Probably 1 struct per ticker name
+double *BaselinePrice = ReadFile("SP500",number_of_rows);
 
-// Find NASDAQ or S&P500 or something and keep that separate so that you can use it as the market baseline
+double *Price = ReadFile("AAPL",number_of_rows);
 
-// Pass 50 days of market baseline as well as the 50 corresponding days of your specific stock to a decision making function
+int i;
 
-// Recieve an ALPHA value from the decision making function. Store the alpha value and toss EVERYTHING ELSE to conserve memory. Maybe keep a count of how many alpha values are stored (for the purpose of averages)
+double Beta;
 
-// Compute the average alpha value
+for (i = 0; i < (number_of_rows/25); i++){
+	Beta = beta(Price[i*24],BaselinePrice[i*24],Price[i*24 + 24],BaselinePrice[i*24 + 24]);
+	// Find the trend of the stock
+	// Send trend and beta value to a decision making function (returns 1 or 0)
+	// If the decision is a BUY (1), see how the stock does the next month within function alpha.c
+	// If decision is NO BUY (0), skip to end of loop
+	// Store the returned alpha values somewhere, possible correlate them with date if possible so we can comment on whether we were more successful in some years than others
+}
 
-// Jump off a building when you see average alpha value
+// Jump off a building when you see the total alpha value
+
+return 0;
 }
