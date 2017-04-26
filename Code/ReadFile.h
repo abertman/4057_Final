@@ -1,0 +1,1 @@
+double ReadFile(char Ticker[]);
