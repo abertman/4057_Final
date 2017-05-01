@@ -53,14 +53,6 @@ while (i < j) {
 printf("Alpha worked\n");
 
 Output("AAPL",j,Good_i,all_beta,all_alpha);
-	// Find the trend of the stock
-	// Send trend and beta value to a decision making function (returns 1 or 0)
-	// If the decision is a BUY (1), see how the stock does the next month within function alpha.c
-	// If decision is NO BUY (0), skip to end of loop
-	// Store the returned alpha values somewhere, possible correlate them with date if possible so we can comment on whether we were more successful in some years than others
-
-
-// Jump off a building when you see the total alpha value
 
 return 0;
 }
