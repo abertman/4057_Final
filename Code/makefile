@@ -12,7 +12,7 @@ ReadFile.o: ReadFile.c ReadFile.h
 beta.o: beta.c beta.h
 	gcc -Wall -c beta.c
 
-alpha.o: alpha.c alpha.h
+alpha.o: alpha.c alpha.h beta.h
 	gcc -Wall -c alpha.c
 
 Output.o: Output.c Output.h

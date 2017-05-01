@@ -15,15 +15,11 @@ char tickers[3][6] = {"SP500", "AAPL", "XOM"};
 
 double *BaselinePrice = ReadFile(tickers[0],number_of_rows);
 
-printf("Baseline Prices collected\n");
-
 int k;
 
 for (k = 1; k <= number_of_stocks; k++) {
 
 double *Price = ReadFile(tickers[k],number_of_rows);
-
-printf("Stock prices collected\n");
 
 int i,j = 0;
 
@@ -43,8 +39,6 @@ for (i = 0; i < (number_of_rows/25); i++){
 	}
 }
 
-printf("Beta is done\n");
-
 i = 0;
 double *all_alpha = (double *)malloc(sizeof(double *)*j);
 
@@ -56,8 +50,6 @@ while (i < j) {
 	i++;
 }
 
-printf("Alpha worked\n");
-
 Output(tickers[k],j,Good_i,all_beta,all_alpha);
 
 free(all_alpha);
@@ -68,6 +60,8 @@ free(Price);
 }
 
 free(BaselinePrice);
+
+printf("Code ran through successfully\n");
 
 return 0;
 }
