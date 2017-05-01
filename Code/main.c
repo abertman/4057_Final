@@ -9,13 +9,19 @@
 
 int main(int argc, char *argv[]){
 
-int number_of_rows = 9150;
+int number_of_rows = 9150, number_of_stocks = 2;
 
-double *BaselinePrice = ReadFile("SP500",number_of_rows);
+char tickers[3][6] = {"SP500", "AAPL", "XOM"};
+
+double *BaselinePrice = ReadFile(tickers[0],number_of_rows);
 
 printf("Baseline Prices collected\n");
 
-double *Price = ReadFile("AAPL",number_of_rows);
+int k;
+
+for (k = 1; k <= number_of_stocks; k++) {
+
+double *Price = ReadFile(tickers[k],number_of_rows);
 
 printf("Stock prices collected\n");
 
@@ -52,7 +58,16 @@ while (i < j) {
 
 printf("Alpha worked\n");
 
-Output("AAPL",j,Good_i,all_beta,all_alpha);
+Output(tickers[k],j,Good_i,all_beta,all_alpha);
+
+free(all_alpha);
+free(all_beta);
+free(Good_i);
+free(Price);
+
+}
+
+free(BaselinePrice);
 
 return 0;
 }
