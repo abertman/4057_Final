@@ -33,14 +33,19 @@ for (i = 0; i < (number_of_rows/25); i++){
 	}
 }
 
+printf("Beta is done\n");
+
 i = 0;
 
-while (i <= j) {
+while (i < j) {
 	
 	Alpha = alpha(Price[Good_i[i]*24],BaselinePrice[Good_i[i]*24],Price[Good_i[i]*24 + 24],BaselinePrice[Good_i[i]*24 + 24]);
 	// Store Alpha somewhere
+//	printf("%f\n",Alpha);
 	i++;
 }
+
+printf("Alpha worked\n");
 
 	// Find the trend of the stock
 	// Send trend and beta value to a decision making function (returns 1 or 0)
