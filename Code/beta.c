@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "beta.h"
 
 double beta(double stock_start, double baseline_start, double stock_end, double baseline_end) {
 
