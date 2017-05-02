@@ -2,12 +2,15 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <time.h>
 #include "ReadFile.h"
 #include "beta.h"
 #include "alpha.h"
 #include "Output.h"
 
 int main(int argc, char *argv[]){
+
+clock_t start = clock();
 
 int number_of_rows = 9150, number_of_stocks = 2;
 
@@ -62,6 +65,10 @@ free(Price);
 free(BaselinePrice);
 
 printf("Code ran through successfully\n");
+
+double diff = (double)(clock() - start) / CLOCKS_PER_SEC;
+
+printf("Runtime: %f ms\n",diff*1000);
 
 return 0;
 }
