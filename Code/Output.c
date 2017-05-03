@@ -5,7 +5,7 @@
 void Output(char *name, int size, int *months, double *betas, double *alphas){
   char * name_of_the_file;
   char * buying_patterns = "_buying_patterns.txt";
-  name_of_the_file = malloc(4+strlen(buying_patterns));
+  name_of_the_file = malloc(5+strlen(buying_patterns));
   strcpy(name_of_the_file,name);
   strcat(name_of_the_file,buying_patterns);
 

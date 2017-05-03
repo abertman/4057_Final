@@ -59,7 +59,7 @@ int main(int argc, char *argv[]){
 		free(all_beta);
 		free(Good_i);
 		free(Price);
-
+		printf("%d\n",k );
 	}
 
 	printf("Code ran through successfully\n");
