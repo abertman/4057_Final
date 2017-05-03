@@ -62,7 +62,7 @@ int main(int argc, char *argv[]){
 
 	}
 
-	free(BaselinePrice);
+	printf("You're almost to the end\n");
 
 	printf("Code ran through successfully\n");
 
