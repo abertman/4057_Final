@@ -5,7 +5,7 @@ double *ReadFile(char Ticker[],int number_of_rows){
 
 char filename[20];
 
-snprintf(filename,20,"%s.csv",Ticker);
+snprintf(filename,20,"StockData/%s.csv",Ticker);
 
 FILE *filehandle = fopen(filename,"r");
 

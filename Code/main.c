@@ -12,9 +12,9 @@ int main(int argc, char *argv[]){
 
 	clock_t start = clock();
 
-	int number_of_rows = 9100, number_of_stocks = 7, number_of_days = 2; // # of stocks does NOT include S&P500
+	int number_of_rows = 9100, number_of_stocks = 16, number_of_days = 2; // # of stocks does NOT include S&P500
 
-	char tickers[8][6] = {"SP500", "AAPL", "XOM", "AXP", "LMT", "NYT", "WMT", "NKE"};
+	char tickers[17][6] = {"SP500", "AAPL", "XOM", "AXP", "LMT", "NYT", "WMT", "NKE", "AET", "ALCO", "ALE", "BMY", "BRT", "CAT", "DCO", "DD", "DIS"};
 
 	double *BaselinePrice = ReadFile(tickers[0],number_of_rows);
 
