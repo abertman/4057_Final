@@ -62,8 +62,6 @@ int main(int argc, char *argv[]){
 
 	}
 
-	printf("You're almost to the end\n");
-
 	printf("Code ran through successfully\n");
 
 	double diff = (double)(clock() - start) / CLOCKS_PER_SEC;
