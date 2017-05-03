@@ -12,14 +12,14 @@ int main(int argc, char *argv[]){
 
 	clock_t start = clock();
 
-	int number_of_rows = 9100, number_of_stocks = 16, number_of_days = 2; // # of stocks does NOT include S&P500
+	int number_of_rows = 9100, number_of_stocks = 26, number_of_days = 2; // # of stocks does NOT include S&P500
 
-	char tickers[17][6] = {"SP500", "AAPL", "XOM", "AXP", "LMT", "NYT", "WMT", "NKE", "AET", "ALCO", "ALE", "BMY", "BRT", "CAT", "DCO", "DD", "DIS"};
+	char tickers[27][6] = {"SP500", "AAPL", "XOM", "AXP", "LMT", "NYT", "WMT", "NKE", "AET", "ALCO", "ALE", "BMY", "BRT", "CAT", "DCO", "DD", "DIS", "EMR", "FDX", "FL", "GE", "GTY", "IBM", "JNJ", "KO", "LLY", "MMM"};
 
 	double *BaselinePrice = ReadFile(tickers[0],number_of_rows);
 
 	int k;
-	#pragma omp parallel for private(k) shared(tickers,BaselinePrice)
+	// #pragma omp parallel for private(k) shared(tickers,BaselinePrice)
 	for (k = 1; k <= number_of_stocks; k++) {
 
 		double *Price = ReadFile(tickers[k],number_of_rows);
@@ -59,6 +59,9 @@ int main(int argc, char *argv[]){
 		free(all_beta);
 		free(Good_i);
 		free(Price);
+		int core_num;
+		core_num = omp_get_thread_num();
+		printf("Core number: %d\n",core_num );
 		printf("%d\n",k );
 	}
 
