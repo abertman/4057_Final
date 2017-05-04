@@ -20,6 +20,10 @@ int main(int argc, char *argv[]){
 	"NAV","NC","PBI","PCG","PEI","PEP","PFE"};
 
 	double *BaselinePrice = ReadFile(tickers[0],number_of_rows);
+	
+	double serial_time = (double)(clock() - start)/CLOCKS_PER_SEC;
+
+	printf("Serial runtime: %f ms \n",serial_time*1000);
 
 	int k;
 	#pragma omp parallel for private(k) shared(tickers,BaselinePrice)
@@ -66,10 +70,14 @@ int main(int argc, char *argv[]){
 		free(all_beta);
 		free(Good_i);
 		free(Price);
-		int core_num;
-		core_num = omp_get_thread_num();
-		printf("Core #: %d | Stock: %s\n",core_num+1,tickers[k] );
+//		int core_num;
+//		core_num = omp_get_thread_num();
+//		printf("Core #: %d | Stock: %s\n",core_num+1,tickers[k] );
 	}
+
+	double parallel_time = (double)(clock() - serial_time) / CLOCKS_PER_SEC;
+
+	printf("Parallel time: %f ms \n",parallel_time*1000);
 
 	printf("Code ran through successfully\n");
 

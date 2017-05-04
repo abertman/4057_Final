@@ -3,26 +3,26 @@
 .PHONY: clean
 
 CC = gcc
-LFLAGS = -Wall -O3
-CFLAGS = -Wall -O3 -c
+LFLAGS = -Wall -Os -g
+CFLAGS = -Wall -Os -g -c
 
 stock_predictor: main.o ReadFile.o beta.o alpha.o Output.o
-	$(CC) $(LFLAGS) -o $@ $^ -fopenmp
+	$(CC) $(LFLAGS) -o $@ $^ -fopenmp -pg
 
 main.o: main.c ReadFile.h beta.h alpha.h Output.h
-	$(CC) $(CFLAGS) $< -fopenmp
+	$(CC) $(CFLAGS) $< -fopenmp -pg
 
 ReadFile.o: ReadFile.c ReadFile.h
-	$(CC) $(CFLAGS) $<
+	$(CC) $(CFLAGS) $< -pg
 
 beta.o: beta.c beta.h
-	$(CC) $(CFLAGS) $<
+	$(CC) $(CFLAGS) $< -pg
 
 alpha.o: alpha.c alpha.h beta.h
-	$(CC) $(CFLAGS) $<
+	$(CC) $(CFLAGS) $< -pg
 
 Output.o: Output.c Output.h
-	$(CC) $(CFLAGS) $<
+	$(CC) $(CFLAGS) $< -pg
 
 clean:
 	rm -rf *.o stock_predictor
