@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void Output(char *name, int size, int *months, double *betas, double *alphas){
+void Output(char *name, int size, int *months, double *betas, double *alphas, double *alpha_trend){
   char * name_of_the_file;
   char * buying_patterns = "_buying_patterns.txt";
   name_of_the_file = malloc(5+strlen(buying_patterns));
@@ -17,6 +17,7 @@ void Output(char *name, int size, int *months, double *betas, double *alphas){
     fprintf(new_file,"%d ",months[i]);
     fprintf(new_file,"%lf ",betas[i]);
     fprintf(new_file,"%lf ",alphas[i]);
+    fprintf(new_file,"%lf ",alpha_trend[i]);
     fprintf(new_file,"\n");
   }
 

@@ -47,16 +47,20 @@ int main(int argc, char *argv[]){
 
 		i = 0;
 		double *all_alpha = (double *)malloc(sizeof(double *)*j);
+		double *alpha_trend = (double *)malloc(sizeof(double *)*j);
+		double total_alpha = 0.0;
 
 		while (i < j) {
 			Alpha = alpha(Price[Good_i[i]*(number_of_days-1)],BaselinePrice[Good_i[i]*(number_of_days-1)],Price[Good_i[i]*(number_of_days-1) + (number_of_days-1)],BaselinePrice[Good_i[i]*(number_of_days-1) + (number_of_days-1)]);
 			all_alpha[i]=Alpha;
+			total_alpha=total_alpha+Alpha;
+			alpha_trend[i]=total_alpha;
 			// Store Alpha somewhere
 			//	printf("%f\n",Alpha);
 			i++;
 		}
 
-		Output(tickers[k],j,Good_i,all_beta,all_alpha);
+		Output(tickers[k],j,Good_i,all_beta,all_alpha,alpha_trend);
 
 		free(all_alpha);
 		free(all_beta);
